@@ -1,0 +1,67 @@
+@Majorcolor:#424141;   //#445161
+@Lightcolor:#fff;
+@Darkcolor:#333;
+@Minorcolor:#eee;   //#f5f5f5
+
+@xxsFrom: 0;
+@xxsTo: 479px;
+@xsFrom: 480px;
+@xsTo: 767px;
+@smFrom: 768px;
+@smTo: 991px;
+@mdFrom: 992px;
+@mdTo: 1199px;
+@lgFrom: 1200px;
+
+.respondToUp(@device, @content) {
+    & when (@device = phones) {
+        @media (min-width: @xxsFrom) { @content(); }
+    }
+    & when (@device = wide-phones) {
+        @media (min-width: @xsFrom) { @content(); }
+    }
+    & when (@device = tablets) {
+        @media (min-width: @smFrom) { @content(); }
+    }
+    & when (@device = small-desktops) {
+        @media (min-width: @mdFrom) { @content(); }
+    }
+    & when (@device = lg-desktops) {
+        @media (min-width: @lgFrom) { @content(); }
+    }
+}
+.respondToDwn(@device, @content) {
+    & when (@device = phones) {
+        @media (max-width: @xxsFrom) { @content(); }
+    }
+    & when (@device = wide-phones) {
+        @media (max-width: @xsFrom) { @content(); }
+    }
+    & when (@device = tablets) {
+        @media (max-width: @smFrom) { @content(); }
+    }
+    & when (@device = small-desktops) {
+        @media (max-width: @mdFrom) { @content(); }
+    }
+    & when (@device = lg-desktops) {
+        @media (max-width: @lgFrom) { @content(); }
+    }
+}
+
+.respondToOnly(@device, @content) {
+    & when (@device = phones) {
+        @media (max-width: @xxsTo) { @content(); }
+    }
+    & when (@device = wide-phones) {
+        @media (min-width: @xsFrom) and (max-width: @xsTo) { @content(); }
+    }
+    & when (@device = tablets) {
+        @media (min-width: @smFrom) and (max-width: @smTo) { @content(); }
+    }
+    & when (@device = small-desktops) {
+        @media (min-width: @mdFrom) and (max-width: @mdTo) { @content(); }
+    }
+    & when (@device = lg-desktops) {
+        @media (min-width: @lgFrom) { @content(); }
+    }
+}
